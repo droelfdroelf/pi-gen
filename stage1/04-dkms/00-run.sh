@@ -14,6 +14,8 @@ VER="0.0.1"
 mkdir -p ${ROOTFS_DIR}/tmp
 echo ${KERNEL} > ${ROOTFS_DIR}/tmp/kv
 mkdir -p ${ROOTFS_DIR}/usr/src/snd-digitakt-${VER}
+# dirty
+curl https://raw.githubusercontent.com/droelfdroelf/snd-digitakt/master/sound/usb/misc/digitakt.c -o files/digitakt.c
 cp files/* ${ROOTFS_DIR}/usr/src/snd-digitakt-${VER}
 # replace kernelver variable in dkms.conf
 sed -e "s/KERNELV/$KERNEL/g" files/dkms.conf > ${ROOTFS_DIR}/usr/src/snd-digitakt-${VER}/dkms.conf
